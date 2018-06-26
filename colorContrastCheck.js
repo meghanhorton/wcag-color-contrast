@@ -127,11 +127,14 @@ onChangeDropdown = function(el){
     });
 },
 drawRatioSwatches = function(threshold){
+    var threshold = parseInt(threshold);
     document.querySelectorAll('td[data-ratio]').forEach(function(elem){
         var dataRatio = elem.getAttribute('data-ratio'),
             colors = elem.getAttribute('data-colors').split(',');
         elem.innerHTML = '';
+
         swatchRatio = elem.appendChild(document.createElement("div"));
+        swatchRatio.setAttribute("title",dataRatio);
         
         swatchRatio.classList.add("swatch","ratio");
         if(dataRatio >= threshold){

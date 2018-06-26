@@ -36,12 +36,14 @@
         <select name="thresholds" id="colorContrastThreshold"></select>
         </label>
     </form>
+    <button id="download">Download as CSV</button>
     <table id="colorChart">
         <thead></thead>
         <tbody></tbody>
     </table>
 
     <script src="colorContrastCheck.js" type="application/javascript"></script>
+    <script src="createCSV.js" type="application/javascript"></script>
     <script>
         var colors = { 
                 "colors": [
@@ -93,6 +95,9 @@
         createColorChart(colors);
         createDropdown(thresholds);
         onChangeDropdown(document.querySelector("select#colorContrastThreshold"));
+
+        // Create CSV
+        // colorAssociations(colors,thresholds);
     </script>
 </body>
 </html>
