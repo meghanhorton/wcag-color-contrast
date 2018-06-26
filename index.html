@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Color Contrast Checker</title>
+
+    <style>
+        body{ font-family: "helvetica neue",arial,sans-serif;}
+        #colorChart th{ text-align: left; padding: 10px; font-size: 12px;}
+
+        #colorChart thead td{ width: 200px; display: block; }
+        #colorChart thead th{ text-align: left; padding: 10px 0; vertical-align: bottom; min-width: 100px;}
+
+        #colorChart tbody td{ vertical-align: middle; text-align: center;}
+
+        /* Color label */
+        #colorChart .color-label.lowContrast{text-shadow:0 0 1px #000,0 0 2px #000;}
+
+        /* Swatches */
+        #colorChart .swatch{ box-sizing: border-box; width: 50px; height: 50px; display: block; margin-right: 10px; float: left; overflow: hidden;}
+        #colorChart .swatch.lowContrast{ border: thin solid #ccc; }
+        #colorChart .swatch.ratio{ padding: 20px 0; font-weight: bold; font-size: 12px; text-align: center; line-height: 10px; position: relative; float: none; margin: 0;}
+        #colorChart .swatch.ratio.fail{ background: rgb(240, 240, 240);  border: thin solid #ccc;}
+        #colorChart .swatch.ratio.fail:before{ content: ""; display: block; position: absolute; background: #ccc; height: 71px; width: 2px; transform: rotate(45deg);transform-origin: 48px 48px;}
+    </style>
+</head>
+<body>
+    <div class="wcag">
+        <h2 class="wcag-label">AA - Small Text</h2>
+        <p class="wcag-desc">WCAG 2.0 level AA requires a contrast ratio of at least <strong>4.5:1</strong> for text that is less than 18px.</p>
+    </div>
+    <form>
+        <label for="thresholds">Check other contrast levels: 
+        <select name="thresholds" id="colorContrastThreshold"></select>
+        </label>
+    </form>
+    <table id="colorChart">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="colorContrastCheck.js" type="application/javascript"></script>
+    <script>
+        var colors = { 
+                "colors": [
+                { "hex": "#B31B1B", "name": "Cornell Red" },
+                { "hex": "#222222", "name": "Black" },
+                { "hex": "#F7F7F7", "name": "Grey" },
+                { "hex": "#FFFFFF", "name": "White" },
+                { "hex": "#006699", "name": "Blue" },
+                { "hex": "#6EB43F", "name": "Green" },
+                { "hex": "#F8981D", "name": "Orange" },
+                { "hex": "#EF4035", "name": "Secondary Red" },
+                { "hex": "#073949", "name": "Navy" },
+                { "hex": "#0068AC", "name": "Medium Blue" },
+                { "hex": "#89CCE2", "name": "Light Blue" },
+                { "hex": "#C9D6A5", "name": "Light Green" },
+                { "hex": "#A2998B", "name": "Dark Warm Gray" },
+                { "hex": "#D8D2C9", "name": "Light Warm Gray" },
+                { "hex": "#9FAD9F", "name": "Dark Gray Green" },
+                { "hex": "#BFB778", "name": "Desaturated Yellow" }]   
+            },
+            thresholds = [
+                {   
+                    "id": "aa_sm", 
+                    "label": "AA - Small Text", 
+                    "description": "WCAG 2.0 level AA requires a contrast ratio of at least <strong>4.5:1</strong> for text that is less than 18px.",
+                    "ratio": 4.5 
+                },
+                { 
+                    "id": "aa_lg", 
+                    "label": "AA - Large Text",
+                    "description": "WCAG 2.0 level AA requires a contrast ratio of at least <strong>3:1</strong> for text that is larger than 18px and bold.",
+                    "ratio": 3
+                },
+                { 
+                    "id": "aaa_sm", 
+                    "label": "AAA - Small Text",
+                    "description": "WCAG 2.0 level AAA requires a contrast ratio of at least <strong>7:1</strong> for text that is less than 18px.",
+                    "ratio": 7
+                },
+                { 
+                    "id": "aaa_lg", 
+                    "label": "AAA - Large Text",
+                    "description": "WCAG 2.0 level AAA requires a contrast ratio of at least <strong>4.5:1</strong> for text that is larger than 18px and bold.",
+                    "ratio": 4.5
+                }
+            ];
+
+        // Check
+        createColorChart(colors);
+        createDropdown(thresholds);
+        onChangeDropdown(document.querySelector("select#colorContrastThreshold"));
+    </script>
+</body>
+</html>

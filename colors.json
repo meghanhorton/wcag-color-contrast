@@ -1,0 +1,22 @@
+{
+    "colors":
+    [
+        { "hex": "#B31B1B", "name": "Cornell Red" },
+        { "hex": "#222222", "name": "" },
+        { "hex": "#F7F7F7", "name": "" },
+        { "hex": "#FFFFFF", "name": "" },
+        { "hex": "#3787B0", "name": "" },
+        { "hex": "#6EB43F", "name": "" },
+        { "hex": "#F8981D", "name": "" },
+        { "hex": "#EF4035", "name": "" },
+        { "hex": "#073949", "name": "" },
+        { "hex": "#0068AC", "name": "" },
+        { "hex": "#89CCE2", "name": "" },
+        { "hex": "#C9D6A5", "name": "" },
+        { "hex": "#A2998B", "name": "" },
+        { "hex": "#D8D2C9", "name": "" },
+        { "hex": "#9FAD9F", "name": "" },
+        { "hex": "#BFB778", "name": "" }
+    ]   
+}
+
